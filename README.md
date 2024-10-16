@@ -7,11 +7,12 @@ Bu projeyi çalıştırmak `ultralytics` kütüphanesi kullanılmıştır.
 
 ### 2. Kullanılan YOLO Modeli
 - Bu projede **YOLOv11x** modeli kullanılmıştır. Bu model, nesne tespiti konusunda çok yüksek doğruluk oranına sahiptir ve karmaşık görüntülerde bile çok sayıda nesneyi doğru şekilde tespit edebilir.
-- **Güven Eşiği (`conf`)**: Bu parametre 0.20 olarak belirlenmiştir, yani model, tespit edilen nesnelerin %20 veya daha fazla güvenle doğru olduğuna inanıldığı durumlarda bu nesneleri döndürecektir.
-- **Cihaz Seçimi (`device`)**: `cpu` seçilmiştir. Bu nedenle model, CPU üzerinde çalışmaktadır.
+- **Güven Eşiği (`conf`)**: Bu parametre 0.20 olarak belirlenmiştir, yani model, tespit edilen nesnelerin %20 veya daha fazla güvenle doğru olduğuna inanıldığı durumlarda bu nesneleri döndürecektir. 
+-video üzerinden yapılan çalışmada ise güven eşiği parametresi 0.25 olarak belirlenmiştir.
+- **Cihaz Seçimi (`device`)**: `cpu` seçilmiştir. Bu nedenle model, CPU üzerinde çalışmaktadır. 
 
 ### 4. Sonuçlar ve Görsellerin Değerlendirilmesi
-Projede, yalnızca YOLOv11x modeli değil, diğer YOLO modelleri de denenmiş olup **YOLOv11x modeli en yüksek doğruluk oranında çalışmıştır**. Görsel olarak şehir görselleri ve daha spesifik nesneler (kumanda, fare vb.) kullanılmıştır.
+Projede, yalnızca YOLOv11x modeli değil, diğer YOLO modelleri de denenmiş olup **YOLOv11x modeli en yüksek doğruluk oranında çalışmıştır**. Görsel olarak şehir görselleri ve daha spesifik nesneler (kumanda, fare vb.) kullanılmıştır. Video olarak ise seyir halindeki bir otomobil içinden cadde görüntüsü kullanılmıştır.
 
 #### 1 No.lu Görsel
 ![1 No.lu Görsel](photos/1.jpg)
@@ -52,6 +53,11 @@ Projede, yalnızca YOLOv11x modeli değil, diğer YOLO modelleri de denenmiş ol
 #### 10 No.lu Görsel
 ![10 No.lu Görsel](photos/10.jpg)
 10 no.lu görselde 2 adet kahve makinası ana nesne olarak bulunmakta ancak model bu nesneleri tanıyamamış, görseldeki diğer nesneleri (kitap ve kavanoz) tanımıştır. Kahve makinalarının model veri setinde olmama ihtimali ve çok fazla parçadan oluşmaları nedeniyle tanınamadıkları düşünülmektedir.
+
+#### 11 No.lu Görsel (Video dosyasından alınmıştır)
+![11 No.lu Görsel](photos/11.jpg)
+Bu görsel, video dosyasından örnek amacıyla alınmıştır. Video dosyasında hareketli nesnelerin tanınması büyük orandan başarılıdır. Yol kenarında park halinde olan motorsiklet gibi nesneler ile yayaların da tanınmasında başarı oranı yüksektir. Trafik ışığı gibi nispeten kücük nesneler tanımlanmışken, tabela gibi daha büyük nesneler model boyunca tanımlanamamıştır. 
+
 
 ### 5. Sonuç
 - **Modelin Başarısı ve Görsel Yoğunluk**: Modelin başarısı ile görsel yoğunluk arasında doğrusal bir ilişki görülmüştür. Nesneler ile fon ayrışmasının çok önemli olduğuna kanaat getirilmiştir.
